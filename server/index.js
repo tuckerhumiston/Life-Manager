@@ -89,20 +89,105 @@ app.get("/todo_lists/:user_id", async (req, res) => {
 });
 
 // Update todo_list
+app.put("/todo_lists/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title } = req.body;
+        //Update todo_list
+        const updateTodoList = await pool.query(
+            "UPDATE todo_lists SET title = $1 WHERE id = $2",
+            [title, id]
+        );
+
+        res.json("Todo list was updated!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 // Delete todo_list
+app.delete("/todo_lists/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        //Delete todo_list
+        const deleteTodoList = await pool.query(
+            "DELETE FROM todo_lists WHERE id = $1",
+            [id]
+        );
+
+        res.json("Todo list was deleted!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 
 // Create todo_item
+app.post("/todo_items", async (req, res) => {
+    try {
+        const { todo_list_id, todo } = req.body;
+        //Create todo_item
+        const newTodoItem = await pool.query(
+            "INSERT INTO todo_items (todo_list_id, todo, completed) VALUES($1, $2, $3) RETURNING *",
+            [todo_list_id, todo, false]
+        );
+        res.status(201).json(newTodoItem);
 
-// Get todo_item
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "An error occurred while creating the todo_item" });
+    }
+});
 
 // Get all todo_items
+app.get("/todo_items/:todo_list_id", async (req, res) => {
+    try {
+        const { todo_list_id } = req.params;
+        //Get all todo_items
+        const allTodoItems = await pool.query(
+            "SELECT * FROM todo_items WHERE todo_list_id = $1",
+            [todo_list_id]
+        );
 
-// Update todo_item
+        res.json(allTodoItems.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// Update todo_item status
+app.put("/todo_items/:list_id/:id", async (req, res) => {
+    try {
+        const { list_id, id } = req.params;
+        const { completed } = req.body;
+
+        //Update todo_item
+        const updateTodoItem = await pool.query(
+            "UPDATE todo_items SET completed = $1 WHERE id = $2",
+            [!completed, id]
+        );
+
+        res.json("Todo item was updated!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 // Delete todo_item
+app.delete("/todo_items/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        //Delete todo_item
+        const deleteTodoItem = await pool.query(
+            "DELETE FROM todo_items WHERE id = $1",
+            [id]
+        );
 
+        res.json("Todo item was deleted!");
+    } catch (err) {
+        console.error(err.message);
+    }
+});
 
 
 
