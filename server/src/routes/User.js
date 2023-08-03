@@ -1,7 +1,7 @@
 
 const express = require("express");
 const router = express.Router();
-const pool = require('../../db');
+const pool = require('../db');
 
 // Create user
 router.post("/", async (req, res) => {
