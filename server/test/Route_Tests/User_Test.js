@@ -1,4 +1,4 @@
-//Everything is only boilerplate rn and will need to be replaced with actual tests
+//Replace boilerplate with actual tests.
 
 var { assert } = require('chai');
 
