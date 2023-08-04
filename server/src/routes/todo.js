@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
+const { userAuth } = require('../middleware/passport-middleware');
 const {
     add_list,
     get_lists,
@@ -15,9 +16,10 @@ const {
     delete_item
 } = require('../controllers/todo');
 
-const { userAuth } = require('../middleware/passport-middleware');
 
+//Middleware
 router.use(userAuth)
+
 
 //Todo List Routes
 router
@@ -27,6 +29,7 @@ router
     .put('/list', update_list)
     .delete('/list', delete_list);
 
+    
 //Todo Item Routes
 router
     .post('/item', add_item)

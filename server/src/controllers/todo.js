@@ -145,13 +145,12 @@ exports.get_list_items = async (req, res) => {
 //Update a todo item
 exports.update_item = async (req, res) => {
     try {
-        const { id } = req.body;
-        const { title } = req.body;
+        const { id, title, completed } = req.body;
         const user_id = req.user.id;
         //Update todo_item
         const updatedTodoItem = await db.query(
-            "UPDATE todo_items SET todo = $1 WHERE id = $2 AND user_id = $3 RETURNING *",
-            [title, id, user_id]
+            "UPDATE todo_items SET todo = $1, completed = $4 WHERE id = $2 AND user_id = $3 RETURNING *",
+            [title, id, user_id, completed]
         );
 
         res.json(updatedTodoItem.rows[0]);

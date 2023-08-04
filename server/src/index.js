@@ -19,6 +19,7 @@ app.use(passport.initialize());
 const authRoute = require('./routes/todo');
 const profileRoute = require('./routes/profile');
 
+
 //initialize routes
 app.use('/api', authRoute);
 app.use('/profile', profileRoute);
