@@ -91,3 +91,20 @@ exports.delete_list = async (req, res) => {
 
 
 //Create a new todo item
+exports.add_item = async (req, res) => {
+    try {
+        const { title } = req.body;
+        const { todo_list_id } = req.body;
+        const { id } = req.user;
+        //Create todo_item
+        const newTodoItem = await db.query(
+            "INSERT INTO todo_items (USER_id, todo_list_id, todo) VALUES($1, $2, $3) RETURNING *",
+            [id, todo_list_id, title]
+        );
+
+        res.status(201).json(newTodoItem);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ error: "An error occurred while creating the todo_item" });
+    }
+}
