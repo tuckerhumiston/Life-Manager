@@ -63,18 +63,6 @@ Once you've signed up for an account, log in to the Life Manager platform to acc
 
 For developers integrating with our API, comprehensive documentation is available at [https://api.lifemanager.com/docs](https://api.lifemanager.com/docs). The API provides endpoints to access user data, manage habits, retrieve mood tracking information, and interact with the AI chatbot.
 
-## Support
-
-If you have any questions, feedback, or need assistance, our support team is here to help. Contact us at support@lifemanager.com, and we'll be glad to assist you.
-
-## Contributing
-
-We welcome contributions from the open-source community. If you'd like to contribute to the Life Manager project, please check out our [Contributing Guidelines](CONTRIBUTING.md) for more information.
-
-## License
-
-The Life Manager platform is licensed under the [MIT License](LICENSE.md). Feel free to use, modify, and distribute it as per the terms of the license.
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
