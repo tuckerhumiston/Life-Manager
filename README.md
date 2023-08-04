@@ -6,7 +6,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tuckerhumiston/Life-Manager">
-    <img src="https://icons8.com/icon/mt7n5rI8STz8/natural-food" alt="Logo" width="80" height="80">
+    <img src="![Alt text](temp-logo.png)" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Life Manager</h3>
