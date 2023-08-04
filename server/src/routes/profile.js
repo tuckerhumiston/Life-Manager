@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const router = Router();
 
-const { register, login, logout, deleteUser} = require('../controllers/auth');
-const { registerValidation, loginValidation } = require('../validators/auth');
+const { register, login, logout, deleteUser} = require('../controllers/profile');
+const { registerValidation, loginValidation } = require('../validators/profile');
 const { validationMiddleware } = require('../middleware/validation-middleware');
 const { userAuth } = require('../middleware/passport-middleware');
 

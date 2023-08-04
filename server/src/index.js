@@ -16,7 +16,7 @@ app.use(passport.initialize());
 
 
 //import routes
-const authRoute = require('./routes/auth');
+const authRoute = require('./routes/todo');
 const profileRoute = require('./routes/profile');
 
 //initialize routes
