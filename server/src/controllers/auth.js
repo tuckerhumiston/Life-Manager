@@ -4,20 +4,6 @@ const { hash } = require('bcryptjs');
 const { sign } = require('jsonwebtoken');
 const { SECRET } = require('../constants');
 
-//Make sure users can not access this route. DELETE ME LATER
-exports.getUsers = async (req, res) => {
-    try {
-        const { rows } = await db.query('SELECT id, username, email FROM users')
-        return res.status(200).json({
-            success: true,
-            users: rows
-        });
-        
-    } catch (error) {
-        console.log(error.message)
-    }
-}
-
 //Register user
 exports.register = async (req, res) => {
     const { username, email, password } = req.body;
@@ -79,14 +65,20 @@ exports.logout = async (req, res) => {
     }
 };
 
-//Example to show protected route
-exports.protected = async (req, res) => {
+//Delete user
+exports.deleteUser = async (req, res) => {
     try {
-        return res.status(200).json({
-            info: 'Protected info'
-        });
+        const { id } = req.user;
+        //Delete user
+        const deleteUser = await db.query(
+            "DELETE FROM users WHERE id = $1",
+            [id]
+        );
         
-    } catch (error) {
-        console.log(error.message)
+        
+        
+        res.json("User was deleted!");
+    } catch (err) {
+        console.error(err.message);
     }
 }
