@@ -10,50 +10,25 @@
 
 # Life Manager (README TEMPLATE)
 
-Life Manager is an all-in-one personal well-being platform designed to empower individuals of all age groups to proactively manage their lives, prioritize mental health, and foster positive habits. With Life Manager, users can access a wide range of features and tools to enhance their day-to-day lives and achieve personal growth.
+Welcome to my developer portfolio project: Life Manager! This repository demonstrates my skills as a full stack developer. Below, you'll find an overview of the technologies used, features implemented, and ways to contact me for further discussion.
 
 <br/>
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Key Features](#key-features)
-- [Getting Started](#getting-started)
-  - [Installation](#installation)
-  - [API Access](#api-access)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
-- [Support](#support)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
 In today's fast-paced world, it's essential to take care of our mental and emotional well-being. Life Manager offers a user-friendly web platform that combines elements of habit tracking, mood monitoring, personalized recommendations, and access to professional help. Our goal is to help users cultivate positive habits, understand their mental state, and seek support when needed, all in one place.
 
+
 ## Key Features
 
-- **Interactive Roadmap Builder:** Create personalized well-being roadmaps with customizable goals and milestones to achieve personal growth and success.
-
-- **Habit Trackers:** Monitor and track your habits with ease. Establish positive routines and stay motivated on your well-being journey.
-
-- **Mood Tracking:** Gain insights into your emotional state over time. Understand patterns and triggers to maintain a balanced mindset.
-
-- **AI Chatbot:** Engage in meaningful conversations with our AI-powered chatbot. Get helpful tips, recommendations, and resources tailored to your unique needs.
-
-- **Professional Help Integration:** Access a directory of licensed therapists and counselors for professional support when needed.
-
-- **Community Support:** Connect with like-minded individuals, share experiences, and participate in community discussions.
+- **Todo Lists:** Build interactive todo lists to visualize your daily tasks.
 
 ## Getting Started
 
 ### Installation
 
 To use the Life Manager platform, simply visit our website at [https://www.lifemanager.com](https://www.lifemanager.com) and sign up for an account. It's free and easy to get started!
-
-### API Access
-
-Developers can access our API to integrate Life Manager features into their applications. For API documentation and access details, visit [https://api.lifemanager.com/docs](https://api.lifemanager.com/docs).
 
 ## Usage
 
@@ -62,6 +37,20 @@ Once you've signed up for an account, log in to the Life Manager platform to acc
 ## API Documentation
 
 For developers integrating with our API, comprehensive documentation is available at [https://api.lifemanager.com/docs](https://api.lifemanager.com/docs). The API provides endpoints to access user data, manage habits, retrieve mood tracking information, and interact with the AI chatbot.
+
+
+## Technologies Used
+
+List of technologies, languages, and tools I've used to build this project:
+
+- Frontend: HTML, CSS, JavaScript
+- Backend: Node.js, Express.js
+- Database: PostgreSQL
+- Version Control: Git, GitHub
+- Test Suite: Chai
+- Deployment: Heroku
+
+
 
 
 
