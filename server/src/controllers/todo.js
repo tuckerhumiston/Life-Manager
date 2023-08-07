@@ -6,16 +6,18 @@ exports.add_list = async (req, res) => {
     try {
         const { title } = req.body;
         const { id } = req.user;
-        console.log(req.user);
         //Create todo_list
         const newTodoList = await db.query(
             "INSERT INTO todo_lists (user_id, title) VALUES($1, $2) RETURNING *",
             [id, title]
         );
 
-        res.status(201).json(newTodoList);
+        res.status(201).json({
+            success: true,
+            message: "Todo list created successfully",
+            list_id : newTodoList.rows[0].id
+        });
     } catch (err) {
-        console.error(err.message);
         res.status(500).json({ error: "An error occurred while creating the todo_list" });
     }
 }
@@ -30,7 +32,10 @@ exports.get_lists = async (req, res) => {
             [id]
         );
 
-        res.json(allTodoLists.rows);
+        res.json({
+            lists: allTodoLists.rows,
+            success: true
+        });
     } catch (err) {
         console.error(err.message);
     }
@@ -47,7 +52,10 @@ exports.get_list = async (req, res) => {
             [id, user_id]
         );
 
-        res.json(todoList.rows[0]);
+        res.json({
+            list: todoList.rows[0],
+            success: true
+        });
     } catch (err) {
         console.error(err.message);
     }
@@ -65,7 +73,10 @@ exports.update_list = async (req, res) => {
             [title, id, user_id]
         );
 
-        res.json(updatedTodoList.rows[0]);
+        res.json({
+            list: updatedTodoList.rows[0],
+            success: true
+        });
     } catch (err) {
         console.error(err.message);
     }
@@ -82,7 +93,10 @@ exports.delete_list = async (req, res) => {
             [id, user_id]
         );
 
-        res.json(deletedTodoList.rows[0]);
+        res.json({
+            list: deletedTodoList.rows[0],
+            success: true
+        });
     } catch (err) {
         console.error(err.message);
     }
@@ -102,7 +116,11 @@ exports.add_item = async (req, res) => {
             [id, todo_list_id, title]
         );
 
-        res.status(201).json(newTodoItem);
+        res.status(201).json({
+            item: newTodoItem,
+            success: true,
+            item_id: newTodoItem.rows[0].id
+        });
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ error: "An error occurred while creating the todo_item" });
@@ -119,7 +137,9 @@ exports.get_all_items = async (req, res) => {
             [id]
         );
 
-        res.json(allTodoItems.rows);
+        res.json({
+            item: allTodoItems.rows,
+            success: true});
     } catch (err) {
         console.error(err.message);
     }
@@ -136,7 +156,11 @@ exports.get_list_items = async (req, res) => {
             [id, user_id]
         );
 
-        res.json(todoItems.rows);
+        res.json({
+            list: todoItems.rows,
+             success: true
+        });
+
     } catch (err) {
         console.error(err.message);
     }
@@ -153,7 +177,10 @@ exports.update_item = async (req, res) => {
             [title, id, user_id, completed]
         );
 
-        res.json(updatedTodoItem.rows[0]);
+        res.json({
+            item: updatedTodoItem.rows[0],
+            success: true
+        });
     } catch (err) {
         console.error(err.message);
     }
@@ -170,7 +197,10 @@ exports.delete_item = async (req, res) => {
             [id, user_id]
         );
 
-        res.json(deletedTodoItem.rows[0]);
+        res.json({
+            item: deletedTodoItem.rows[0],
+            success: true
+        });
     } catch (err) {
         console.error(err.message);
     }

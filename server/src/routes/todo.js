@@ -35,8 +35,8 @@ router
     .post('/item', add_item)
     .get('/items', get_all_items)
     .get('/list-items', get_list_items)
-    .put('/item', userAuth, update_item)
-    .delete('/item', delete_item)
+    .put('/item', update_item)
+    .delete('/item', delete_item);
 
 
 

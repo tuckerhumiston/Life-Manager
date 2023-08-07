@@ -16,12 +16,12 @@ app.use(passport.initialize());
 
 
 //import routes
-const authRoute = require('./routes/todo');
+const todoRoute = require('./routes/todo');
 const profileRoute = require('./routes/profile');
 
 
 //initialize routes
-app.use('/api', authRoute);
+app.use('/api', todoRoute);
 app.use('/profile', profileRoute);
 
 
