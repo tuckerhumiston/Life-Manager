@@ -26,5 +26,5 @@ CREATE TABLE todo_items (
     todo_list_id INTEGER REFERENCES todo_lists(id) ON DELETE CASCADE,
     todo VARCHAR(256) NOT NULL,
     completed BOOLEAN NOT NULL DEFAULT false,
-    user_id INTEGER REFERENCES users(id)
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
