@@ -1,53 +1,76 @@
 import React, { useState } from 'react';
 
 import "../style/features/Login.css";
+import { onRegistration, onLogin } from '../api/auth';
 
 export const Login = () => {
 
+    //State
     const [toggleLogin, setToggleLogin] = useState(true);
 
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+
+    //Event handlers
     const onSignupForm = async (e) => {
         e.preventDefault();
         try {
-            const body = {
+
+            const { data } = await onRegistration({
                 username: username,
                 email: email,
                 password: password
-            };      
-            const response = await fetch("http://localhost:5000/profile/register", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(body)
             });
+
+            setError('');
+            setSuccess(data.message);
+
             setToggleLogin(true);
 
         } catch (error) {
-            console.error(error.message);
+            console.error(error.response.data.errors[0].msg);
+            setError(error.response.data.errors[0].msg);
+            setSuccess('');
         }
     };
 
     const onLoginForm = async (e) => {
         e.preventDefault();
         try {
-            const body = {
+            const { data } = await onLogin({
                 email: email,
                 password: password
-            };
-            const response = await fetch("http://localhost:5000/profile/login", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(body)
             });
-            console.log(response);
+
+            setError('');
+            setSuccess(data.message);
+
+            setEmail('');
+            setPassword('');
+            setUsername('');
+
         } catch (error) {
-            console.error(error.message);
+            console.error(error.response.data.errors[0].msg);
+            setError(error.response.data.errors[0].msg);
+            setSuccess('');
         }
     };
+
+    const onChangePage = () => {
+        const toggle = toggleLogin;
+
+        setError('');
+        setSuccess('');
+        setToggleLogin(!toggle);
+    }
             
+
+
     return toggleLogin ? (
         <div className="login">
             <div className="left">
@@ -63,19 +86,26 @@ export const Login = () => {
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         ></input>
                         <input 
                             type="password" 
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         ></input>
-                        <a href="http://localhost:3000/">
-                            <input type="submit" value="Login"></input>
-                        </a>
+
+                        <div style={{color: 'red', margin: '10px 0'}}>
+                            {error}
+                        </div>
+
+                        <input type="submit" value="Login"></input>
                         
                     </form>
-                    <p>New to Life Manager? <button onClick={() => setToggleLogin(false)}>Create an account</button></p>
+                    <p>New to Life Manager? <button onClick={() => onChangePage()
+
+                        }>Create an account</button></p>
                 </div>
             </div>
         </div>
@@ -94,22 +124,30 @@ export const Login = () => {
                             placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
+                            required
                         ></input>
                         <input 
                             type="email" 
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         ></input>
                         <input 
                             type="password" 
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         ></input>
+
+                        <div style={{color: 'red', margin: '10px 0'}}>
+                            {error}
+                        </div>
+
                         <input type="submit" value="Sign Up"></input>
                     </form>
-                    <p>Already have an account? <button onClick={() => setToggleLogin(true)}>Login</button></p>
+                    <p>Already have an account? <button onClick={() => onChangePage()}>Login</button></p>
                 </div>
             </div>
         </div>
