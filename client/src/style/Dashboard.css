@@ -1,0 +1,52 @@
+.dashboard {
+    margin: 2em;
+    width: 100%;
+
+    display: grid;
+    grid-template-areas: 
+        "todo quote quote"
+        "todo goals habits"
+        "todo extra habits";
+    grid-template-rows: 1fr 4fr 3fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1.5em;
+    row-gap: 1.5em;
+
+    text-align: center;
+}
+
+.dashboard div h3 {
+    padding: 1em 0;
+}
+
+.dashboard .feature {
+    background-color: #f4f4f4;
+    border-radius: 1rem;
+    /* border: 1px solid black; */
+
+    -webkit-filter: drop-shadow(5px 5px 5px #000000);
+        filter: drop-shadow(5px 5px 5px #0000008c);
+}
+
+.dashboard .todo {
+    grid-area: todo;
+}
+
+.dashboard .quote {
+    grid-area: quote;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard .goals {
+    grid-area: goals;
+}
+
+.dashboard .habits {
+    grid-area: habits;
+}
+
+.dashboard .extra {
+    grid-area: extra;
+}

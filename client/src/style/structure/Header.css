@@ -1,0 +1,24 @@
+.header {
+    background-color: 	#656986;
+    /* max-height: 5rem; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    -webkit-filter: drop-shadow(5px 5px 5px #000000);
+        filter: drop-shadow(5px 5px 5px #0000008c);
+
+}
+
+.header img {
+    max-height: 3.5rem;
+    padding: .5rem;
+    border-radius: 100%;
+    -webkit-filter: drop-shadow(5px 5px 5px #000000);
+        filter: drop-shadow(5px 5px 5px #0000008c);
+}
+
+* {
+    margin: 0;
+}
