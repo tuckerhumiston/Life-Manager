@@ -93,9 +93,8 @@ exports.update_item = async (req, res) => {
 //Delete a list item
 exports.delete_item = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { description, list } = req.query;
         const user_id = req.user.id;
-        const { list } = req.body;
 
         // Validate that 'list' is one of the allowed tables
         if (!allowedTables.includes(list)) {
@@ -104,8 +103,8 @@ exports.delete_item = async (req, res) => {
 
         // Delete todo_item
         const deletedItem = await db.query(
-            `DELETE FROM ${list} WHERE id = $1 AND user_id = $2 RETURNING *`,
-            [id, user_id]
+            `DELETE FROM ${list} WHERE description = $1 AND user_id = $2 RETURNING *`,
+            [description, user_id]
         );
 
         res.json({

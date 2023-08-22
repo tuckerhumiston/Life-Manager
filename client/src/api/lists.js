@@ -20,3 +20,17 @@ export async function getItems(itemData) {
         params: itemData // Pass itemData as query parameters
     });
 }
+
+export async function updateItem(itemData) {
+    return await axios.put(
+        'http://localhost:5000/feature/item',
+        itemData
+    );
+}
+
+export async function deleteItem(itemData) {
+    return await axios.delete(
+        'http://localhost:5000/feature/item',
+        { params: itemData }
+    );
+}

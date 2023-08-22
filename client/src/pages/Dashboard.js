@@ -64,7 +64,7 @@ export const Dashboard = () => {
                 </div>
 
                 <div className="extra feature">
-                    <h3 className="extra">Insert extra here</h3>
+                    <h3 className="extra">Controls:</h3>
                     <button className="logout" onClick={logout}>Logout</button>
                 </div>
 

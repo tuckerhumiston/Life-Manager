@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { postItem, getItems } from '../api/lists';
+import { postItem, getItems, updateItem, deleteItem } from '../api/lists';
 
 import '../style/features/List.css';
 
@@ -23,7 +23,7 @@ export const List = (props) => {
         loadItems();
     }, []);
 
-    const onSubmitForm = async (e) => {
+    const onAddItem = async (e) => {
         e.preventDefault();
 
         const body = { 
@@ -32,15 +32,40 @@ export const List = (props) => {
         };
         await postItem(body);
         await loadItems(); // Fetch items again after adding a new item
+        setNewItem("");
+    };
+
+    const onRemoveItem = async (e) => {
+        //Code to Strike through item or remove strike through
+        if (e.target.style.textDecoration === 'line-through') {
+            e.target.style.textDecoration = 'none';
+        } else {
+            e.target.style.textDecoration = 'line-through';
+        }
+
+        //wait for 2 seconds
+        setTimeout(async () => {
+            await deleteItem({ 
+                list: props.listType,
+                description: e.target.innerText
+            });
+            await loadItems();
+        }, 2000);
+
+        
+
+
     };
 
     return (
         <div className="list">
             {items.map(item => (
-                <p key={item.id}>{item.description}</p>
+                <button className='list-instance' onClick={onRemoveItem} id={item.id}>
+                    <p key={item.id}>{item.description}</p>
+                </button>
             ))}
 
-            <form className="add-item" onSubmit={onSubmitForm}>
+            <form className="add-item" onSubmit={onAddItem}>
                 <input 
                     type="text"
                     placeholder="Enter task here"
