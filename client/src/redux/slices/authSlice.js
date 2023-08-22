@@ -1,7 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+//Store/retreive user session in local storage
+const userAuthFromLocalStorage = () => {
+    const isAuth = localStorage.getItem('isAuth');
+
+    if (isAuth && JSON.parse(isAuth) === true) {
+        return true;
+    }
+    return false;
+};
+
 const initialState = {
-  isAuth: false,
+  isAuth: userAuthFromLocalStorage(),
 }
 
 export const authSlice = createSlice({

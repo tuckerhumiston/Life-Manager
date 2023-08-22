@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import "../style/features/Login.css";
 import { onRegistration, onLogin } from '../api/auth';
+import { authenticateUser } from '../redux/slices/authSlice';
 
 export const Login = () => {
 
@@ -15,6 +17,8 @@ export const Login = () => {
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
 
+
+    const dispatch = useDispatch();
 
     //Event handlers
     const onSignupForm = async (e) => {
@@ -46,6 +50,8 @@ export const Login = () => {
                 email: email,
                 password: password
             });
+            dispatch(authenticateUser());
+            localStorage.setItem('isAuth', 'true'); //Store user session in local storage
 
             setError('');
             setSuccess(data.message);

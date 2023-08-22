@@ -10,15 +10,16 @@ import {
 import { Dashboard } from './pages/Dashboard';
 import Root from './components/Root';
 import { Login } from './pages/Login';
+import { useSelector } from 'react-redux';
 
 const PrivateRoutes = () => {
-  const isAuth = false;
+  const { isAuth } = useSelector(state => state.auth);
 
   return <>{ isAuth ? <Outlet /> : <Navigate to="/login" />}</>
 };
 
 const RestrictedRoutes = () => {
-  const isAuth = false;
+  const { isAuth } = useSelector(state => state.auth);
 
   return <>{ !isAuth ? <Outlet /> : <Navigate to="/dashboard" />}</>
 };
@@ -35,7 +36,6 @@ const router = createBrowserRouter( createRoutesFromElements(
 
     <Route element={<RestrictedRoutes />} >
       <Route path="/login" element={ <Login /> } />
-      {/* <Route path="" element={<Navigate to="/login" />} /> */}
     </Route>
 
   </>
