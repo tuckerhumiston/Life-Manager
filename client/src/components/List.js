@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import '../style/features/Todo.css'
+import '../style/features/List.css'
 
-export const TodoList = () => {
+export const List = () => {
 
     const [todo, setTodo] = useState("");
 
@@ -25,14 +25,14 @@ export const TodoList = () => {
     }
         
         return (
-            <div className="todo-list">
+            <div className="list">
                 <p>Test</p>
                 <p>Test</p>
                 <p>Test</p>
                 <p>Test</p>
                 <p>Test</p>
                 <p>Test</p>
-                <form className="add-todo" onSubmit={onSubmitForm}>
+                <form className="add-item" onSubmit={onSubmitForm}>
                     <input 
                         type="text"
                         placeholder="Enter task here"

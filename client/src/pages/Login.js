@@ -32,14 +32,21 @@ export const Login = () => {
             });
 
             setError('');
-            setSuccess(data.message);
+            // setSuccess(data.message);
 
             setToggleLogin(true);
 
         } catch (error) {
-            console.error(error.response.data.errors[0].msg);
-            setError(error.response.data.errors[0].msg);
-            setSuccess('');
+            console.error(error); // Log the entire error object for debugging
+            console.error(error.response); // Log the response object for debugging
+
+            // Check the structure of error.response and adjust the following line accordingly
+            if (error.response && error.response.data && error.response.data.errors && error.response.data.errors[0]) {
+                setError(error.response.data.errors[0].msg);
+            } else {
+                setError("An error occurred during registration.");
+            }
+            // setSuccess('');
         }
     };
 
