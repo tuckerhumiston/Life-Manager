@@ -5,15 +5,14 @@ import { useEffect, useState } from 'react';
 import {List} from '../components/List';
 import { unauthenticateUser } from '../redux/slices/authSlice';
 import { onLogout, onInitialization } from '../api/auth';
-import { fetchProtectedInfo } from '../api/lists';
+// import { fetchProtectedInfo } from '../api/lists';
 import '../style/Dashboard.css';
 
 
 export const Dashboard = () => {
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState(true);
-    const [protectedData, setProtectedData] = useState(null);
-    const [initialized, setInitialized] = useState(false);
+    const [loading, setLoading] = useState(false); //Change to true when using protectedInfo
+    // const [protectedData, setProtectedData] = useState(null);
 
     const logout = async () => {
         try {
@@ -25,23 +24,19 @@ export const Dashboard = () => {
         }
     };
 
-    const protectedInfo = async () => {
-        try {
-            if (!initialized) { //Create user tables
-                await onInitialization();
-                setInitialized(true);
-            }
-            const { data } = await fetchProtectedInfo();
-            setProtectedData(data);
-            setLoading(false);
-        } catch (error) {
-            logout();
-        }
-    };
+    // const protectedInfo = async () => {
+    //     try {
+    //         const { data } = await fetchProtectedInfo();
+    //         setProtectedData(data);
+    //         setLoading(false);
+    //     } catch (error) {
+    //         logout();
+    //     }
+    // };
 
-    useEffect(() => {
-        protectedInfo();
-    }, []);
+    // useEffect(() => {
+    //     protectedInfo();
+    // }, []);
         
         return loading ? (
             <h3>Loading...</h3>
@@ -51,7 +46,7 @@ export const Dashboard = () => {
 
                 <div className="todo feature">
                     <h3 className="todo">My Tasks: </h3>
-                    <List className="todo"/>
+                    <List className="todo" listType="todo"/>
                 </div>
 
                 <div className="quote feature">
@@ -60,12 +55,12 @@ export const Dashboard = () => {
 
                 <div className="habits feature">
                     <h3 className="habits">My Habits:</h3>
-                    <List className="habits-list"/>
+                    <List className="habits-list" listType="habits"/>
                 </div>
 
                 <div className="goals feature">
                     <h3 className="goals">My Goals:</h3>
-                    <List className="goals-list"/>
+                    <List className="goals-list" listType="goals"/>
                 </div>
 
                 <div className="extra feature">

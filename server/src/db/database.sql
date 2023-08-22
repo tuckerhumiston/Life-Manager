@@ -1,9 +1,9 @@
 CREATE DATABASE life_manager;
 
 -- Drop the existing tables
-DROP TABLE IF EXISTS todo_items;
-DROP TABLE IF EXISTS todo_lists;
-DROP TABLE IF EXISTS passwords;
+DROP TABLE IF EXISTS habits;
+DROP TABLE IF EXISTS goals;
+DROP TABLE IF EXISTS todo;
 DROP TABLE IF EXISTS users;
 
 -- Create the tables with the correct ON DELETE CASCADE option
@@ -12,19 +12,27 @@ CREATE TABLE users (
     username VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    created_at DATE DEFAULT current_date
+    created_at DATE DEFAULT current_date,
+    initialized BOOLEAN NOT NULL DEFAULT false
 );
 
-CREATE TABLE todo_lists (
+CREATE TABLE habits (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    title VARCHAR(100) NOT NULL
+    description VARCHAR(256) NOT NULL,
+    completed BOOLEAN NOT NULL DEFAULT false,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TABLE todo_items (
+CREATE TABLE goals (
     id SERIAL PRIMARY KEY,
-    todo_list_id INTEGER REFERENCES todo_lists(id) ON DELETE CASCADE,
-    todo VARCHAR(256) NOT NULL,
+    description VARCHAR(256) NOT NULL,
+    completed BOOLEAN NOT NULL DEFAULT false,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE todo (
+    id SERIAL PRIMARY KEY,
+    description VARCHAR(256) NOT NULL,
     completed BOOLEAN NOT NULL DEFAULT false,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
