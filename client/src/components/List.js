@@ -8,21 +8,23 @@ export const List = (props) => {
     const [newItem, setNewItem] = useState("");
     const [items, setItems] = useState([]);
 
+    
+    // Function to load items from database
     const loadItems = async () => {
         try {
             const response = await getItems({ list: props.listType }); // Pass listType as query parameter
-    
-            setItems(response.data.items);
+            setItems(response.data.items); // Update items state
         } catch (error) {
             console.error("Error loading items:", error);
         }
     };
     
-
+    // Load items on component mount
     useEffect(() => {
         loadItems();
     }, []);
 
+    // Function to add a new list item
     const onAddItem = async (e) => {
         e.preventDefault();
 
@@ -35,13 +37,9 @@ export const List = (props) => {
         setNewItem("");
     };
 
+    // Function to remove a list item
     const onRemoveItem = async (e) => {
-        //Code to Strike through item or remove strike through
-        if (e.target.style.textDecoration === 'line-through') {
-            e.target.style.textDecoration = 'none';
-        } else {
-            e.target.style.textDecoration = 'line-through';
-        }
+        e.target.style.textDecoration = 'line-through';
 
         //wait for 2 seconds
         setTimeout(async () => {
@@ -51,10 +49,6 @@ export const List = (props) => {
             });
             await loadItems();
         }, 2000);
-
-        
-
-
     };
 
     return (

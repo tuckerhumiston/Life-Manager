@@ -1,5 +1,8 @@
+// Functions to fetch data from the backend
+
 import axios from 'axios';
 axios.defaults.withCredentials = true;
+
 
 export async function fetchProtectedInfo() {
     return await axios.get(

@@ -9,7 +9,7 @@ export const Header = () => {
                         <img src={require("../style/images/temp-logo.png")} alt="logo"></img>
                     </a>
                     <h1>Life Manager</h1>
-                    <p>img here</p>
+                    <img src={require("../style/images/profile-icon.png")} alt="logo"></img>
                 </div>
             );
 };

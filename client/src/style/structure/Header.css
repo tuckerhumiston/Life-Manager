@@ -11,6 +11,13 @@
 
 }
 
+.header h1 {
+    color: #22a85f;
+    filter: drop-shadow(0.2px 0.2px 0.2px #0000008c);
+    text-shadow: 0 0 3px #565656, 0 0 5px #080808;
+    
+}
+
 .header img {
     max-height: 3.5rem;
     padding: .5rem;
