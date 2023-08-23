@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
 
-import {List} from '../components/List';
+import { List } from '../components/List';
+import { Quote } from '../components/Quote';
 import { unauthenticateUser } from '../redux/slices/authSlice';
-import { onLogout,} from '../api/auth';
+import { onLogout } from '../api/auth';
 import '../style/Dashboard.css';
 
 
@@ -33,7 +33,7 @@ export const Dashboard = () => {
             </div>
 
             <div className="quote feature">
-                <p className="quote">Insert quote here</p>
+                <Quote />
             </div>
 
             <div className="habits feature">

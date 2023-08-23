@@ -1,0 +1,29 @@
+
+.quote {
+    position: relative; /* Make the container a positioning context */
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+    font-family: 'Garamond', serif;
+    font-style: italic;
+    padding-left: 0.4em;
+}
+
+.quote cite {
+    font-style: normal;
+}
+
+.refresh {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none!important;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add this rule to ensure the button doesn't overlap the quote content */
+.blockquote {
+    margin-right: 40px; /* Adjust this value to create space for the button */
+}

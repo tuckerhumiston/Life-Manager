@@ -18,11 +18,13 @@ app.use(passport.initialize());
 //import routes
 const listRoute = require('./routes/list');
 const profileRoute = require('./routes/profile');
+const quoteRoute = require('./routes/quote');
 
 
 //initialize routes
 app.use('/feature', listRoute);
 app.use('/profile', profileRoute);
+app.use('/quote', quoteRoute);
 
 
 //app start
