@@ -1,27 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 import { List } from '../components/List';
 import { Quote } from '../components/Quote';
-import { unauthenticateUser } from '../redux/slices/authSlice';
-import { onLogout } from '../api/auth';
 import '../style/Dashboard.css';
 
 
 export const Dashboard = () => {
-    const dispatch = useDispatch();
-
-    // User logout function
-    const logout = async () => {
-        try {
-            await onLogout();
-            dispatch(unauthenticateUser());
-            localStorage.removeItem('isAuth'); //Remove user session from local storage
-        } catch (error) {
-            console.error(error.response);
-        }
-    };
-
+    
     return (
         <div className="dashboard">
             <div className="todo feature">
@@ -53,10 +38,7 @@ export const Dashboard = () => {
             </div>
 
             <div className="extra feature">
-                <h3 className="extra">Controls:</h3>
-                <button className="logout" onClick={logout}>
-                    Logout
-                </button>
+                <h4> More features coming soon!</h4>
             </div>
         </div>
     );
