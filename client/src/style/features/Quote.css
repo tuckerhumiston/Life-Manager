@@ -7,10 +7,12 @@
     font-family: 'Garamond', serif;
     font-style: italic;
     padding-left: 0.4em;
+    font-size: 1.08em;
 }
 
 .quote cite {
     font-style: normal;
+    font-size: 1em;
 }
 
 .refresh {

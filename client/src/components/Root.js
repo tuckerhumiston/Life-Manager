@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 
 import { Nav } from "./Nav";
 import { Header } from "./Header";
-// import Footer from "./Footer";
 
 import "../style/structure/index.css";
 
@@ -13,11 +12,10 @@ export default function Root() {
             <Header />
             <main>
                 <div className="side-by-side">
-                    <Nav />
+                    {/* <Nav /> */}
                     <Outlet />
                 </div>
             </main>
-            {/* <Footer /> */}
         </>
     )
 }
