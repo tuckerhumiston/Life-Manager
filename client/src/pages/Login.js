@@ -91,6 +91,7 @@ export const Login = () => {
             </div>
 
             <div className="right">
+                <h1>Life Manager</h1>
                 <div className="form">
                     <h2>Login</h2>
                     <form onSubmit={onLoginForm}>
@@ -129,6 +130,7 @@ export const Login = () => {
             </div>
 
             <div className="right">
+                <h1>Life Manager</h1>
                 <div className="form">
                     <h2>Sign Up</h2>
                     <form onSubmit={onSignupForm}>

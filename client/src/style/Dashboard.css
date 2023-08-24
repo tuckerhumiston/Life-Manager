@@ -69,3 +69,49 @@
     max-height: 100vh;
     width: 100vw;
 }
+
+
+
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .dashboard {
+        grid-template-areas: 
+        "todo quote quote"
+        "todo goals habits"
+        "todo goals habits";
+        grid-template-rows: 2.5fr 4fr 3fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .dashboard .extra {
+        display: none
+    }
+}
+
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-areas:
+            "quote"
+            "todo"
+            "goals"
+            "habits"
+            "extra";
+        grid-template-rows: auto;
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard .scroll {
+        border-radius: 0.5rem;
+        min-height: 8em;
+    }
+    .dashboard .feature {
+        border-radius: 0.5rem;
+        min-height: 8em;
+    }
+
+    .dashboard div h3 {
+        font-size: 1.2rem;
+    }
+}
