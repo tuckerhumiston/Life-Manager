@@ -1,26 +1,29 @@
-
 const db = require("../db");
-
-const allowedTables = ['habits', 'goals', 'todo'];
+const { validationResult } = require("express-validator");
 
 
 //Create a new list item
 exports.add_item = async (req, res) => {
     try {
-        const { title, list } = req.body;
-        const { id } = req.user;
-        
-        // Validate that 'list' is one of the allowed tables
-        if (!allowedTables.includes(list)) {
-            return res.status(400).json({ error: "Invalid table name" });
+        // Validate request body
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
 
-        // Create item
+        // Pull out request body
+        const { title, list } = req.body;
+        const { id } = req.user;
+        const sanitizedTitle = encodeURIComponent(title);
+        const sanatizedList = encodeURIComponent(list);
+
+        // Database query
         const newItem = await db.query(
-            `INSERT INTO ${list} (user_id, description) VALUES($1, $2) RETURNING *`,
-            [id, title]
+            `INSERT INTO ${sanatizedList} (user_id, description) VALUES($1, $2) RETURNING *`,
+            [id, sanitizedTitle]
         );
 
+        // Send response
         res.status(201).json({
             item: newItem.rows[0],
             success: true,
@@ -36,20 +39,25 @@ exports.add_item = async (req, res) => {
 //Get all of a user's list's items
 exports.get_all_items = async (req, res) => {
     try {
-        const { id } = req.user;
-        const { list } = req.query;
-        
-        // Validate that 'list' is one of the allowed tables
-        if (!allowedTables.includes(list)) {
-            return res.status(400).json({ error: "Invalid table name" });
+        // Validate request body
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
 
-        // Get all list items
+        // Pull out request body
+        const { id } = req.user;
+        const { list } = req.query;
+        const sanatizedList = encodeURIComponent(list);
+        
+
+        // Database query
         const allItems = await db.query(
-            `SELECT * FROM ${list} WHERE user_id = $1`,
+            `SELECT * FROM ${sanatizedList} WHERE user_id = $1`,
             [id]
         );
 
+        // Send response
         res.json({
             items: allItems.rows,
             success: true
@@ -64,21 +72,27 @@ exports.get_all_items = async (req, res) => {
 //Update a list item
 exports.update_item = async (req, res) => {
     try {
+
+        // Validate request body
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        // Pull out request body
         const { id, title, completed } = req.body;
         const user_id = req.user.id;
         const { list } = req.body;
+        const sanitizedTitle = encodeURIComponent(title);
+        const sanatizedList = encodeURIComponent(list);
 
-        // Validate that 'list' is one of the allowed tables
-        if (!allowedTables.includes(list)) {
-            return res.status(400).json({ error: "Invalid table name" });
-        }
-
-        // Update todo_item
+        // Database query
         const updatedItem = await db.query(
-            `UPDATE ${list} SET description = $1, completed = $4 WHERE id = $2 AND user_id = $3 RETURNING *`,
-            [title, id, user_id, completed]
+            `UPDATE ${sanatizedList} SET description = $1, completed = $4 WHERE id = $2 AND user_id = $3 RETURNING *`,
+            [sanitizedTitle, id, user_id, completed]
         );
 
+        // Send response
         res.json({
             item: updatedItem.rows[0],
             success: true
@@ -93,20 +107,25 @@ exports.update_item = async (req, res) => {
 //Delete a list item
 exports.delete_item = async (req, res) => {
     try {
+
+        // Validate request body
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        // Pull out request body
         const { description, list } = req.query;
         const user_id = req.user.id;
-
-        // Validate that 'list' is one of the allowed tables
-        if (!allowedTables.includes(list)) {
-            return res.status(400).json({ error: "Invalid table name" });
-        }
+        const sanatizedList = encodeURIComponent(list);
 
         // Delete todo_item
         const deletedItem = await db.query(
-            `DELETE FROM ${list} WHERE description = $1 AND user_id = $2 RETURNING *`,
+            `DELETE FROM ${sanatizedList} WHERE description = $1 AND user_id = $2 RETURNING *`,
             [description, user_id]
         );
 
+        // Send response
         res.json({
             item: deletedItem.rows[0],
             success: true
