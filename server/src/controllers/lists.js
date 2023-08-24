@@ -58,7 +58,7 @@ exports.get_all_items = async (req, res) => {
         );
 
         // Send response
-        res.json({
+        res.status(200).json({
             items: allItems.rows,
             success: true
         });
@@ -80,9 +80,8 @@ exports.update_item = async (req, res) => {
         }
 
         // Pull out request body
-        const { id, title, completed } = req.body;
+        const { id, title, completed, list } = req.body;
         const user_id = req.user.id;
-        const { list } = req.body;
         const sanitizedTitle = encodeURIComponent(title);
         const sanatizedList = encodeURIComponent(list);
 
@@ -126,7 +125,7 @@ exports.delete_item = async (req, res) => {
         );
 
         // Send response
-        res.json({
+        res.status(200).json({
             item: deletedItem.rows[0],
             success: true
         });
