@@ -22,10 +22,14 @@
 .dashboard .feature {
     background-color: #f4f4f4;
     border-radius: 1rem;
-    /* border: 1px solid black; */
+    filter: drop-shadow(5px 5px 5px #0000008c);
 
-    -webkit-filter: drop-shadow(5px 5px 5px #000000);
-        filter: drop-shadow(5px 5px 5px #0000008c);
+}
+
+.dashboard .scroll {
+    overflow-y: auto;
+    max-height: 100%;
+    box-sizing: border-box;
 }
 
 .dashboard .todo {

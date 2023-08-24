@@ -9,7 +9,7 @@ export const Dashboard = () => {
     
     return (
         <div className="dashboard">
-            <div className="todo feature">
+            <div className="todo feature scroll">
                 <h3 className="todo">My Tasks: </h3>
                 <List
                     className="todo"
@@ -21,7 +21,7 @@ export const Dashboard = () => {
                 <Quote />
             </div>
 
-            <div className="habits feature">
+            <div className="habits feature scroll">
                 <h3 className="habits">My Habits:</h3>
                 <List
                     className="habits-list"
@@ -29,7 +29,7 @@ export const Dashboard = () => {
                 />
             </div>
 
-            <div className="goals feature">
+            <div className="goals feature scroll">
                 <h3 className="goals">My Goals:</h3>
                 <List
                     className="goals-list"
@@ -37,7 +37,7 @@ export const Dashboard = () => {
                 />
             </div>
 
-            <div className="extra feature">
+            <div className="extra feature scroll">
                 <h4> More features coming soon!</h4>
             </div>
         </div>
