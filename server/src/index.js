@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
-const { PORT, CLIENT_URL } = require('./constants');
+const { PORT, CLIENT_URL, SECRET } = require('./constants');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const cors = require('cors');
+const session = require('express-session');
+const helmet = require('helmet');
 
 //initialize middleware
 app.use(express.json());
@@ -13,6 +15,17 @@ app.use(cors({
     credentials: true
 }));
 app.use(passport.initialize());
+app.use(helmet());
+app.use(session({ 
+    secret: SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        secure: true, // Use in production with HTTPS
+        maxAge: 1000 * 60 * 60 * 24, // Session expiration time (1 day)
+        httpOnly: true,
+    },
+}));
 
 
 //import routes
