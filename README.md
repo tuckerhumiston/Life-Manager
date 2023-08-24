@@ -1,6 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-
 
 <!-- PROJECT LOGO -->
 <div align="center">
@@ -8,7 +6,7 @@
     <img src="./temp-logo.png" alt="Logo" width="80" height="80">
   </a>
 
-# Life Manager (README TEMPLATE)
+# Life Manager
 
 Welcome to my developer portfolio project: Life Manager! This repository demonstrates my skills as a full stack developer. Below, you'll find an overview of the technologies used, features implemented, and ways to contact me for further discussion.
 
@@ -23,6 +21,10 @@ In today's fast-paced world, it's essential to take care of our mental and emoti
 ## Key Features
 
 - **Todo Lists:** Build interactive todo lists to visualize your daily tasks.
+- **Goal Setting:** Write down your goals as a first step toward acheiving them.
+- **Habit Tracker:** Keep track of your daily habits.
+- **Inspirational Quote Generator:** Recieve randomly fetched inspirational quotes from key public figures.
+
 
 ## Getting Started
 
@@ -49,6 +51,15 @@ List of technologies, languages, and tools I've used to build this project:
 - Version Control: Git, GitHub
 - Test Suite: Chai
 - Deployment: Heroku
+
+## Web Security Implementation
+- Passwords are hashed using bcrypt
+- User sessions are stored in cookies using express-session
+- Security headers are set using helmet
+- Data is sanatized and validated using express-validator
+- DOM based precautions are taken to prevent XSS attacks
+- Login rate limiting is implemented using express-rate-limiter
+
 
 
 
