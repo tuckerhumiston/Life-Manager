@@ -33,25 +33,22 @@ describe("List Tests", async () => {
             done();
           }
         });
-
-        
     });
 
-  it('it should login user', (done) => {
-    const payload = {
-      "email": "admintest02@email.com",
-      "password": "@dmintest"
-    }
-    agent
-      // .request(app)
-      .post('/profile/login')
-      .send(payload)
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.body.success.should.equal(true);
-        done();
-    });
-  });
+    it('it should login user', (done) => {
+        const payload = {
+          "email": "admintest02@email.com",
+          "password": "@dmintest"
+        };
+        agent
+          .post('/profile/login')
+          .send(payload)
+          .end((err, res) => {
+            res.should.have.status(200);
+            res.body.success.should.equal(true);
+            done();
+          });
+      });
 
   describe('List Functions', () => {
     it('it should create a new list item', (done) => {
@@ -109,7 +106,7 @@ describe("List Tests", async () => {
             });
     });
 
-//Close user environment after tests
+    //Close user environment after tests
     after((done) => {
         agent
             .delete('/profile/delete-user')
