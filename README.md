@@ -6,11 +6,16 @@
     <img src="./temp-logo.png" alt="Logo" width="80" height="80">
   </a>
 
-# Life Manager
+# Life Manager: Your Path to Well-being
 
-Welcome to my developer portfolio project: Life Manager! This repository demonstrates my skills as a full stack developer. Below, you'll find an overview of the technologies used, features implemented, and ways to contact me for further discussion.
+Welcome to Life Manager, a testament to my journey as a full stack developer. This repository showcases my ability to create a comprehensive web platform. Below, you'll discover an overview of the technologies harnessed, features realized, and methods to connect with me for further discourse.
 
 <br/>
+<div align="center">
+  <img src="./screenshots/dashboard.png" alt="Screenshot 1" width="400" style="margin-right: 20px;">
+  <img src="./screenshots/login.png" alt="Screenshot 2" width="400">
+</div>
+
 
 
 ## Introduction
@@ -23,7 +28,7 @@ In today's fast-paced world, it's essential to take care of our mental and emoti
 - **Todo Lists:** Build interactive todo lists to visualize your daily tasks.
 - **Goal Setting:** Write down your goals as a first step toward acheiving them.
 - **Habit Tracker:** Keep track of your daily habits.
-- **Inspirational Quote Generator:** Recieve randomly fetched inspirational quotes from key public figures.
+- **Inspirational Wisdom:** Recieve randomly fetched inspirational quotes from key public figures.
 
 
 ## Getting Started
@@ -34,11 +39,11 @@ To use the Life Manager platform, simply visit our website at [https://www.lifem
 
 ## Usage
 
-Once you've signed up for an account, log in to the Life Manager platform to access all the features. Create your personalized roadmap, track habits, and monitor your mood. Engage with the AI chatbot for valuable insights and recommendations. When seeking professional help, explore our therapist directory for licensed practitioners who can assist you on your well-being journey.
+Upon registering for an account, log in to the Life Manager platform to unlock an array of transformative features. Track your habits, set goals, and build todo lists to stay organized.
 
 ## API Documentation
 
-https://documenter.getpostman.com/view/27751094/2s9Y5YQgz4
+For a deeper dive into the technical details, refer to our API documentation: https://documenter.getpostman.com/view/27751094/2s9Y5YQgz4
 
 
 ## Technologies Used
@@ -55,19 +60,24 @@ List of technologies, languages, and tools I've used to build this project:
 - Security: bcrypt, express-session, helmet, express-validator, express-rate-limiter, cors, jsonwebtoken
 - Other: Nodemon, Dotenv, pg, axios
 
-## Web Security Implementation
+## Web Security Enrichment
 - Passwords are hashed using bcrypt
 - User sessions are stored in cookies using express-session
 - Security headers are set using helmet
 - Data is sanatized and validated using express-validator
 - DOM based precautions are taken to prevent XSS attacks
-- Login rate limiting is implemented using express-rate-limiter
+- Login rate limiting is established using express-rate-limiter
 
-## Full Backend Test-Suite
-- All endpoints are tested using Chai 
+## Thorough Backend Test Suite
+Every endpoint has undergone comprehensive testing leveraging Chai, ensuring the platform's reliability.
 
 
-
+<div align="center">
+  <p>Connect with me:</p>
+  <a href="mailto:tuckerhumiston@hotmail.com">Email</a> |
+  <a href="https://www.linkedin.com/in/tucker-humiston">LinkedIn</a> |
+  <a href="https://github.com/tuckerhumiston">GitHub</a>
+</div>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://dev.to/envoy_/150-badges-for-github-pnk -->
