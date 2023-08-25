@@ -38,7 +38,7 @@ Once you've signed up for an account, log in to the Life Manager platform to acc
 
 ## API Documentation
 
-For developers integrating with our API, comprehensive documentation is available at [https://api.lifemanager.com/docs](https://api.lifemanager.com/docs). The API provides endpoints to access user data, manage habits, retrieve mood tracking information, and interact with the AI chatbot.
+https://documenter.getpostman.com/view/27751094/2s9Y5YQgz4
 
 
 ## Technologies Used
