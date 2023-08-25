@@ -47,10 +47,13 @@ List of technologies, languages, and tools I've used to build this project:
 
 - Frontend: HTML, CSS, JavaScript
 - Backend: Node.js, Express.js
-- Database: PostgreSQL
+- Database: PostgreSQL, Postbird
 - Version Control: Git, GitHub
 - Test Suite: Chai
 - Deployment: Heroku
+- API Documentation: Postman
+- Security: bcrypt, express-session, helmet, express-validator, express-rate-limiter, cors, jsonwebtoken
+- Other: Nodemon, Dotenv, pg, axios
 
 ## Web Security Implementation
 - Passwords are hashed using bcrypt
@@ -60,7 +63,8 @@ List of technologies, languages, and tools I've used to build this project:
 - DOM based precautions are taken to prevent XSS attacks
 - Login rate limiting is implemented using express-rate-limiter
 
-
+## Full Backend Test-Suite
+- All endpoints are tested using Chai 
 
 
 
