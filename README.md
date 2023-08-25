@@ -93,6 +93,7 @@ npm install
 ```bash
 DATABASE_URL=your_database_url
 ```
+3. Configure ./server/src/db/index.js with the correct credentials for your database.
 
 ### Running the Application
 1. **Start the Backend:** In the backend directory, run the following command to start the backend server:
