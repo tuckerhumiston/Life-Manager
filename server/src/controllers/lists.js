@@ -14,7 +14,7 @@ exports.add_item = async (req, res) => {
         // Pull out request body
         const { title, list } = req.body;
         const { id } = req.user;
-        const sanitizedTitle = encodeURIComponent(title);
+        const sanitizedTitle = encodeURIComponent(title).replace(/%20/g, ' ');
         const sanatizedList = encodeURIComponent(list);
 
         // Database query
@@ -82,7 +82,7 @@ exports.update_item = async (req, res) => {
         // Pull out request body
         const { id, title, completed, list } = req.body;
         const user_id = req.user.id;
-        const sanitizedTitle = encodeURIComponent(title);
+        const sanitizedTitle = encodeURIComponent(title).replace(/%20/g, ' ');
         const sanatizedList = encodeURIComponent(list);
 
         // Database query
