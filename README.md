@@ -13,10 +13,9 @@ Welcome to Life Manager, a testament to my journey as a full stack developer. Th
 
 <br/>
 
-<div align="center">
-  <img src="./screenshots/login.png" alt="Screenshot 2" width="400">
-  <img src="./screenshots/dashboard.png" alt="Screenshot 1" width="400" style="margin-right: 20px;">
-</div>
+  ![Screenshot 2023-11-21 113619](https://github.com/tuckerhumiston/Life-Manager/assets/128828000/15132b32-05b2-404a-9ebd-3ca83843846f)
+  ![Screenshot 2023-11-21 113729](https://github.com/tuckerhumiston/Life-Manager/assets/128828000/8b243f01-b1a0-44ef-bed8-c0a97b9a5856)
+  ![Screenshot 2023-11-21 113748](https://github.com/tuckerhumiston/Life-Manager/assets/128828000/3a39183c-ab0d-4967-a120-d36fa4345e6b)
 
 
 
